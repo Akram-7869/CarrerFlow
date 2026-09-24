@@ -6,7 +6,7 @@ const REFRESH_COOKIE = 'careerflow_refresh';
 const cookieOptions = {
   httpOnly: true,
   secure: env.NODE_ENV === 'production',
-  sameSite: 'strict',
+  sameSite: env.NODE_ENV === 'production' ? 'none' : 'strict',
   path: '/api/v1/auth',
   maxAge: env.REFRESH_TOKEN_TTL_DAYS * 24 * 60 * 60 * 1000,
 };
